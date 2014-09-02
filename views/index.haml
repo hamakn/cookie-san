@@ -1,0 +1,21 @@
+%h2 Cookie-san
+%div
+  %h3 Your Cookie
+  %div.cookies
+    %textarea{ rows: 30, cols: 100 }
+      = @jj_cookie_json
+%div
+  %h4 Links
+  %div
+    - if env["REQUEST_URI"] =~ /^https\:/
+      %a{ href: "http://#{env["HTTP_HOST"]}/" }
+        http
+    - if env["REQUEST_URI"] =~ /^http\:/
+      %a{ href: "https://#{env["HTTP_HOST"]}/" }
+        https
+  %div
+    %a{ href: "/new" }
+      set cookie
+  %div
+    %a{ href: "/destroy" }
+      clear cookie

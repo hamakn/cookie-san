@@ -1,0 +1,20 @@
+%h2 Cookie-san
+%div
+  %h3 Set Cookie
+  %form{ method: "post", action: "/create" }
+    %div
+      %textarea{ name: "cookie_json", rows: 30, cols: 100 }
+        = @cookie_str
+    -#
+      %div
+        - if env["REQUEST_URI"] =~ /^https\:/
+          %input{ name: "secure", type: "checkbox" }
+            secure
+        - if env["REQUEST_URI"] =~ /^http\:/
+          %input{ name: "secure", type: "checkbox", disabled: true }
+            secure (https only)
+      %div
+        %input{ name: "http_only", type: "checkbox" }
+          http-only
+    %div
+      %input{ name: "SET", type: "submit" }
