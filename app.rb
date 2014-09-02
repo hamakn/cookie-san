@@ -7,7 +7,6 @@ class App < Sinatra::Base
 
   get "/" do
     @jj_cookie_json = JSON.pretty_generate(cookies.to_h)
-    puts cookies.class
     haml :index
   end
 
